@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    
+<meta charset="UTF-8">   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Baldur's Gate 3 Character Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@600&family=Roboto&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/cyborg/bootstrap.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Baldur's Gate 3 Character Builder</h1>
+        <hr>
+        <form>
+
+            <h4>Background</h4>
+
+            <div class="col-auto mb-3">
+                <label for="charName" class="form-label">Character Name</label>
+                <input type="text" class="form-control" id="charName" placeholder="Enter character name">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="race" class="form-label">Race</label>
+                <select class="form-select" id="race">
+                    <option selected disabled>Choose a race...</option>
+                    <option value="dragonborn">Dragonborn</option>
+                    <option value="human">Human</option>
+                    <option value="elf">Elf</option>
+                    <option value="drow">Drow</option>
+                    <option value="dwarf">Dwarf</option>
+                    <option value="tiefling">Tiefling</option>
+                    <option value="githyanki">Githyanki</option>
+                    <option value="gnome">Gnome</option>
+                    <option value="half-elf">Half-Elf</option>
+                    <option value="halfling">Halfling</option>
+                    <option value="half-orc">Half-Orc</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="subrace" class="form-label">Subrace</label>
+                <select class="form-select" id="subrace">
+                    <option selected>Choose a subrace...</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="class" class="form-label">Class</label>
+                <select class="form-select" id="class">
+                    <option selected disabled>Choose a class...</option>
+                    <option value="fighter">Fighter</option>
+                    <option value="cleric">Cleric</option>
+                    <option value="wizard">Wizard</option>
+                    <option value="rogue">Rogue</option>
+                    <option value="warlock">Warlock</option>
+                    <option value="druid">Druid</option>
+                    <option value="monk">Monk</option>
+                    <option value="paladin">Paladin</option>
+                    <option value="ranger">Ranger</option>
+                    <option value="sorcerer">Sorcerer</option>
+                    <option value="barbarian">Barbarian</option>
+                    <option value="bard">Bard</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="subclass" class="form-label">Subclass</label>
+                <select class="form-select" id="subclass">
+                    <option selected>Choose a subclass...</option>
+                </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="background" class="form-label">Background</label>
+                <select class="form-select" id="background">
+                    <option selected disabled>Choose a background...</option>
+                    <option value="soldier">Soldier</option>
+                    <option value="acolyte">Acolyte</option>
+                    <option value="noble">Noble</option>
+                    <option value="criminal">Criminal</option>
+                    <option value="hermit">Hermit</option>
+                    <option value="charlatan">Charlatan</option>
+                    <option value="entertainer">Entertainer</option>
+                    <option value="folk hero">Folk Hero</option>
+                    <option value="guild artisan">Guild Artisan</option>
+                    <option value="outlander">Outlander</option>
+                    <option value="sage">Sage</option>
+                    <option value="urchin">Urchin</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="backstory" class="form-label">Character Backstory:</label>
+                <textarea class="form-control" id="backstory" name="backstory" rows="6" placeholder="Write your character's backstory here..."></textarea>
+            </div>
+
+            <h4>Ability Scores</h4>
+            <p>(You may only choose one "+2" and one "+1" bonus.)</p>
+            <div id="abilities" class="row mb-3">
+                <div class="col-md-4">
+                    <label for="strength" class="form-label">Strength</label>
+                    <input type="number" class="form-control" id="strength" min="8" max="15" oninput="updatePointPool()">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="strBonus2" onchange="updatePointPool()">
+                        <label class="form-check-label" for="strBonus2">+2 Bonus</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="strBonus1" onchange="updatePointPool()">
+                        <label class="form-check-label" for="strBonus1">+1 Bonus</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="dexterity" class="form-label">Dexterity</label>
+                    <input type="number" class="form-control" id="dexterity" min="8" max="15" oninput="updatePointPool()">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="dexBonus2" onchange="updatePointPool()">
+                        <label class="form-check-label" for="dexBonus2">+2 Bonus</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="dexBonus1" onchange="updatePointPool()">
+                        <label class="form-check-label" for="dexBonus1">+1 Bonus</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="constitution" class="form-label">Constitution</label>
+                    <input type="number" class="form-control" id="constitution" min="8" max="15" oninput="updatePointPool()">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="conBonus2" onchange="updatePointPool()">
+                        <label class="form-check-label" for="conBonus2">+2 Bonus</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="conBonus1" onchange="updatePointPool()">
+                        <label class="form-check-label" for="conBonus1">+1 Bonus</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="intelligence" class="form-label">Intelligence</label>
+                    <input type="number" class="form-control" id="intelligence" min="8" max="15" oninput="updatePointPool()">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="intBonus2" onchange="updatePointPool()">
+                        <label class="form-check-label" for="intBonus2">+2 Bonus</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="intBonus1" onchange="updatePointPool()">
+                        <label class="form-check-label" for="intBonus1">+1 Bonus</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="charisma" class="form-label">Charisma</label>
+                    <input type="number" class="form-control" id="charisma" min="8" max="15" oninput="updatePointPool()">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="chaBonus2" onchange="updatePointPool()">
+                        <label class="form-check-label" for="chaBonus2">+2 Bonus</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="chaBonus1" onchange="updatePointPool()">
+                        <label class="form-check-label" for="chaBonus1">+1 Bonus</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="wisdom" class="form-label">Wisdom</label>
+                    <input type="number" class="form-control" id="wisdom" min="8" max="15" oninput="updatePointPool()">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="wisBonus2" onchange="updatePointPool()">
+                        <label class="form-check-label" for="wisBonus2">+2 Bonus</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="wisBonus1" onchange="updatePointPool()">
+                        <label class="form-check-label" for="wisBonus1">+1 Bonus</label>
+                    </div>
+            </div>
+            
+            </div>
+
+            <div class="col-md-3 mt-3">
+                <label for="pointPool">Point Pool</label>
+                <input type="number" class="form-control mb-3" id="pointPool" value="27" readonly>
+            </div>
+
+            <h5>Modifiers</h5>
+            <div class="row mb-3">
+                <div class="col-md-2 mt-3">
+                    <label for="strModif">STR</label>
+                    <input type="text" class="form-control mb-3" id="strModif" value="0" readonly>
+                </div>
+                <div class="col-md-2 mt-3">
+                    <label for="dexModif">DEX</label>
+                    <input type="text" class="form-control mb-3" id="dexModif" value="0" readonly>
+                </div>
+                <div class="col-md-2 mt-3">
+                    <label for="conModif">CON</label>
+                    <input type="text" class="form-control mb-3" id="conModif" value="0" readonly>
+                </div>
+                <div class="col-md-2 mt-3">
+                    <label for="intModif">INT</label>
+                    <input type="text" class="form-control mb-3" id="intModif" value="0" readonly>
+                </div>
+                <div class="col-md-2 mt-3">
+                    <label for="chaModif">CHA</label>
+                    <input type="text" class="form-control mb-3" id="chaModif" value="0" readonly>
+                </div>
+                <div class="col-md-2 mt-3">
+                    <label for="wisModif">WIS</label>
+                    <input type="text" class="form-control mb-3" id="wisModif" value="0" readonly>
+                </div>
+            </div>
+
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Skills</th>
+                            <th scope="col">Modifier</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Acrobatics</td>
+                            <td class="dexModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Animal Handling</td>
+                            <td class="wisModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Arcana</td>
+                            <td class="intModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Athletics</td>
+                            <td class="strModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Deception</td>
+                            <td class="chaModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>History</td>
+                            <td class="intModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Insight</td>
+                            <td class="wisModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Intimidation</td>
+                            <td class="chaModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Investigation</td>
+                            <td class="intModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Medicine</td>
+                            <td class="wisModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Nature</td>
+                            <td class="intModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Perception</td>
+                            <td class="wisModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Performance</td>
+                            <td class="chaModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Persuasion</td>
+                            <td class="chaModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Religion</td>
+                            <td class="intModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Sleight of Hand</td>
+                            <td class="dexModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Stealth</td>
+                            <td class="dexModif">0</td>
+                        </tr>
+                        <tr>
+                            <td>Survival</td>
+                            <td class="wisModif">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <button class="btn btn-primary" onclick="saveFormData()" id="saveCharacterBtn">Save Character</button>
+            <button class="m-3" onclick="loadFormData()" id="loadCharacterBtn">Load Saved Character</button>
+
+        </form>
+    </div>
+
+    <script src="Scripts/scripts.js"></script>
+</body>
+</html>
